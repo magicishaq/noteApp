@@ -1,0 +1,26 @@
+{
+    "notes": [
+
+        {"id" : "1", 
+        "content" : "Cheesy chips",
+        "date": "2020"},
+
+        {"id" : "2", 
+        "content" : "Hello World",
+        "date": "2020"}
+        ,
+        {"id" : "3", 
+            "content" : "This is a great day to do homework",
+            "date": "2021"},
+            
+        {"id" : "4", 
+            "content" : "Watch Spider-man 3 again",
+            "date": "2021"},
+            
+        {"id" : "5", 
+            "content" : "Go get eggs and milk",
+            "date": "2021"}
+
+    ] 
+     
+}

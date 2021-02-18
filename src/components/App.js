@@ -7,7 +7,8 @@ const App = (props) => {
   const [notes, setNotes ] = useState(props.notes) 
   //storing user submitted notes
   const [newNote, setNewNote] = useState('...please write your new Note')
-
+  //keeps track which notes to display
+  const [showAll, setShowAll] = useState(true) 
   //adding a new note
   const addNote = (event) => {
     event.preventDefault()
@@ -27,11 +28,19 @@ const App = (props) => {
     console.log(event.target.value)
     setNewNote(event.target.value)
   }
+  // if showAll is true, will show all notes
+  //list of objects, either containing all notes or the important notes
+  const notesToShow = showAll ? [...notes] : notes.filter(note => note.important === true)
     return(
       <div>
         <h1> Notes</h1>
+        <div>
+          <button onClick={() => setShowAll(!showAll)}>
+            show {showAll? 'Important' : 'All' }
+          </button>
+        </div>
         <ul>
-          {notes.map((note, i) => {
+          {notesToShow.map((note, i) => {
             return (
               <Note key={i} note={note} />
             )

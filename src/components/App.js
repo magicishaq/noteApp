@@ -1,15 +1,25 @@
-import React , {useState} from 'react'
+import React , {useState, useEffect} from 'react'
+import axios from 'axios'
 import Note from './Note'
 import Total from './Total' 
 //Main bulk of the app
-const App = (props) => {
+const App = () => {
   //lets users add new notes
-  const [notes, setNotes ] = useState(props.notes) 
+  const [notes, setNotes ] = useState([]) //blank state 
   //storing user submitted notes
   const [newNote, setNewNote] = useState('...please write your new Note')
   //keeps track which notes to display
   const [showAll, setShowAll] = useState(true) 
-  //adding a new note
+  
+const hook = () => {
+  const serverUrl = 'http://localhost:3001/notes'
+  console.log('effect')
+  const promise = axios.get(serverUrl)
+  promise.then(response => setNotes(response.data))
+}
+  //load data from the server
+  useEffect(hook, [])
+
   const addNote = (event) => {
     event.preventDefault()
     const newNoteObject = {

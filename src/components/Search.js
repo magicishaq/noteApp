@@ -11,7 +11,7 @@ const hook = () => {
     promise.then(response => setResults(response.data))
 }
 const filterBar = (event) => {
- const searchResults = results.filter(elm => elm.content.toLowerCase().includes(event.target.value))
+ const searchResults = results.filter(elm => elm.content.toLowerCase().includes(event.target.value.toLowerCase()) && event.target.value !== "")
  setSearched(searchResults)
 }
 useEffect(hook, [])
@@ -21,10 +21,11 @@ return (
     <input onChange={filterBar} placeholder="search for note" />
     </form>
     <ul>
+    
     {searched.map((elm, i) => {
         return (
             <li key={i}> {elm.content}</li>
-        )
+        ) 
     })}
     </ul>
 </div>

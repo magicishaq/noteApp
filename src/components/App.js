@@ -1,7 +1,8 @@
 import React , {useState, useEffect} from 'react'
 import axios from 'axios'
 import Note from './Note'
-import Total from './Total' 
+import Total from './Total'
+import Search from './Search' 
 //Main bulk of the app
 const App = () => {
   //lets users add new notes
@@ -10,7 +11,7 @@ const App = () => {
   const [newNote, setNewNote] = useState('...please write your new Note')
   //keeps track which notes to display
   const [showAll, setShowAll] = useState(true) 
-  
+
 const hook = () => {
   const serverUrl = 'http://localhost:3001/notes'
   console.log('effect')
@@ -48,6 +49,7 @@ const hook = () => {
           <button onClick={() => setShowAll(!showAll)}>
             show {showAll? 'Important' : 'All' }
           </button>
+          <Search />
         </div>
         <ul>
           {notesToShow.map((note, i) => {

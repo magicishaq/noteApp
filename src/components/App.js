@@ -2,9 +2,9 @@ import React , {useState, useEffect} from 'react'
 import axios from 'axios'
 import Note from './Note'
 import Total from './Total'
-import Search from './Search' 
 //Main bulk of the app
 const App = () => {
+  const [searchTerm, setSearchTerm] = useState("") //for searching 
   //lets users add new notes
   const [notes, setNotes ] = useState([]) //blank state 
   //storing user submitted notes
@@ -20,6 +20,19 @@ const hook = () => {
 }
   //load data from the server
   useEffect(hook, [])
+ 
+  const searchNote = (event) => {
+    if(event.target.value !== "") {
+    setSearchTerm(event.target.value.toLowerCase())
+    } else {
+      hook() 
+    }
+  }
+  const searchFunction = () => {
+    const filteredNotes = notes.filter(elm => elm.content.toLowerCase().includes(searchTerm))
+    setNotes(filteredNotes) 
+  }
+  useEffect(searchFunction,[searchTerm])
 
   const addNote = (event) => {
     event.preventDefault()
@@ -46,10 +59,10 @@ const hook = () => {
       <div>
         <h1> Notes</h1>
         <div>
+          <label>Search Note </label> <input onChange={searchNote} /> 
           <button onClick={() => setShowAll(!showAll)}>
             show {showAll? 'Important' : 'All' }
           </button>
-          <Search />
         </div>
         <ul>
           {notesToShow.map((note, i) => {

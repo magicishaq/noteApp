@@ -11,7 +11,6 @@ const App = () => {
   const [newNote, setNewNote] = useState('...please write your new Note')
   //keeps track which notes to display
   const [showAll, setShowAll] = useState(true) 
-
 const hook = () => {
   const serverUrl = 'http://localhost:3001/notes'
   console.log('effect')
@@ -20,20 +19,9 @@ const hook = () => {
 }
   //load data from the server
   useEffect(hook, [])
- 
   const searchNote = (event) => {
-    if(event.target.value !== "") {
     setSearchTerm(event.target.value.toLowerCase())
-    } else {
-      hook() 
-    }
   }
-  const searchFunction = () => {
-    const filteredNotes = notes.filter(elm => elm.content.toLowerCase().includes(searchTerm))
-    setNotes(filteredNotes) 
-  }
-  useEffect(searchFunction,[searchTerm])
-
   const addNote = (event) => {
     event.preventDefault()
     const newNoteObject = {
@@ -55,6 +43,8 @@ const hook = () => {
   // if showAll is true, will show all notes
   //list of objects, either containing all notes or the important notes
   const notesToShow = showAll ? [...notes] : notes.filter(note => note.important === true)
+  const filteredNotes = searchTerm.length > 0 ?  notesToShow.filter(elm => elm.content.toLowerCase().includes(searchTerm)) : [...notesToShow]
+  
     return(
       <div>
         <h1> Notes</h1>
@@ -65,7 +55,7 @@ const hook = () => {
           </button>
         </div>
         <ul>
-          {notesToShow.map((note, i) => {
+          {filteredNotes.map((note, i) => {
             return (
               <Note key={i} note={note} />
             )

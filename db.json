@@ -1,58 +1,14 @@
 {
   "notes": [
     {
-      "id": "1",
-      "content": "Cheesy chips",
-      "date": "2020",
-      "important": false
+      "id": 3,
+      "content": "Add",
+      "date": "2021-02-22T20:14:40.344Z"
     },
     {
-      "id": "2",
-      "content": "Hello World",
-      "date": "2020",
-      "important": false
-    },
-    {
-      "id": "3",
-      "content": "This is a great day to do homework",
-      "date": "2021",
-      "important": false
-    },
-    {
-      "id": "4",
-      "content": "Watch Spider-man 3 again",
-      "date": "2021",
-      "important": false
-    },
-    {
-      "id": "5",
-      "content": "Go get eggs and milk",
-      "date": "2021",
-      "important": false
-    },
-    {
-      "id": 6,
+      "id": 2,
       "content": "...please write your new Note",
-      "date": "2021-02-21T17:45:08.452Z",
-      "important": true
-    },
-    {
-      "id": 7,
-      "content": "Saved to the server",
-      "date": "2021-02-21T17:45:19.101Z",
-      "important": false
-    },
-    {
-      "id": 8,
-      "content": "abcdefg ",
-      "date": "2021-02-21T17:45:55.548Z",
-      "important": true
-    },
-    {
-      "id": 9,
-      "content": "New note to the screen",
-      "date": "2021-02-21T17:47:02.308Z",
-      "important": true
+      "date": "2021-02-22T20:15:23.054Z"
     }
   ]
 }

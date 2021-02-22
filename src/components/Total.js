@@ -1,4 +1,4 @@
-import React from 'react' 
+import React from 'react'
 //displays the total
 
 const Total = ({notes}) => {

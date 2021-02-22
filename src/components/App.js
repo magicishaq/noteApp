@@ -10,7 +10,20 @@ const App = () => {
   //storing user submitted notes
   const [newNote, setNewNote] = useState('...please write your new Note')
   //keeps track which notes to display
-  const [showAll, setShowAll] = useState(true) 
+  const [showAll, setShowAll] = useState(true)
+  
+  //function to star notes
+const toggleImportanceOf = (id) => {
+  const url = `http://localhost:3001/notes/${id}`
+  const note = notes.find(elm => elm.id === id)
+  const alteredNote = {...note, important: !note.important} 
+  
+  axios.put(url, alteredNote).then(response => {
+    setNotes(notes.map(note => note.id !== id ? note : response.data))
+  })
+}
+
+//when reloading the state
 const hook = () => {
   const serverUrl = 'http://localhost:3001/notes'
   console.log('effect')
@@ -31,9 +44,14 @@ const hook = () => {
       important: Math.random() < 0.5, 
     }
     //adds the newNote to the notes states
-    console.log(notes.concat(newNoteObject))
     setNotes(notes.concat(newNoteObject))
     setNewNote('') //input field is now blank  
+
+    //posts to the server
+    axios.post('http://localhost:3001/notes', newNoteObject)
+    .then(response => {
+      console.log('response')
+    }) 
   }
   //syncs the changes made to the input to the apps state
   const handleNoteChange = (event) => {
@@ -51,13 +69,13 @@ const hook = () => {
         <div>
           <label>Search Note </label> <input onChange={searchNote} /> 
           <button onClick={() => setShowAll(!showAll)}>
-            show {showAll? 'Important' : 'All' }
+            show {showAll? 'Starred' : 'All' }
           </button>
         </div>
         <ul>
           {filteredNotes.map((note, i) => {
             return (
-              <Note key={i} note={note} />
+              <Note key={i} note={note} toggleImportance={() => toggleImportanceOf(note.id)} />
             )
           })}
           </ul>

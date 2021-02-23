@@ -1,6 +1,10 @@
 body{
   font-family: "Lucida Console", "Courier New", monospace;
-  background-color: rgba(218, 224, 217, 0.589);
+  background-color: #fff
+}
+
+.header{
+ 
 }
 
 #searchbar{

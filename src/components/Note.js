@@ -3,17 +3,23 @@ import React from 'react'
 const Note = ({note, toggleImportance, deleteNote}) => {
     const label = note.important
         ? 'Unstar'
-        : 'Star'
-    const deleteLabel = 'Delete'
+        : (<i className="fas fa-star"></i>)
+    const deleteLabel = (<i className="fas fa-trash"></i>)
+    const labelColor = note.important? 'starred' : '' 
     return (
-        <li>{note.content}
+        <div className={`noteapp-item innernote-container ${labelColor}`}>
+          <div className="innernote-item content">
+          {note.content}
+          </div>
+           <div className="innernote-item content-button">  
             <button onClick={toggleImportance}>
                 {label}
             </button>
             <button onClick={deleteNote}>
                 {deleteLabel}
             </button>
-        </li>
+            </div>
+        </div>
     )
 }
 

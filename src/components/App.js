@@ -2,7 +2,9 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Note from './Note'
 import Total from './Total'
+import Header from './Header'
 import '../index.css'
+import '@fortawesome/fontawesome-free'
 //Main bulk of the app
 const App = () => {
     const [searchTerm,
@@ -101,20 +103,14 @@ const App = () => {
         : [...notesToShow]
 
     return (
-        <div>
-            <h1>
-                Notes</h1>
-            <div>
-                <label>Search Note
+        <div className="note-container">
+            <Header title={'Notes'}/> 
+            <div className="note-item">
+                <input id="searchbar" onChange={searchNote}/>
+                <label htmlFor="searchbar"><i className="fas fa-search search-label"></i>
                 </label>
-                <input onChange={searchNote}/>
-                <button onClick={() => setShowAll(!showAll)}>
-                    show {showAll
-                        ? 'Starred'
-                        : 'All'}
-                </button>
             </div>
-            <ul>
+            <div className="noteapp-container">
                 {filteredNotes.map((note, i) => {
                     return (<Note
                         key={i}
@@ -122,11 +118,16 @@ const App = () => {
                         toggleImportance={() => toggleImportanceOf(note.id)}
                         deleteNote={() => deleteNote(note.id)}/>)
                 })}
-            </ul>
-            <form onSubmit={addNote}>
+            </div>
+            <form className="note-item" onSubmit={addNote}>
                 <input value={newNote} onChange={handleNoteChange}/>
-                <button type="submit">Save</button>
+                <button type="submit"><i className="fas fa-save"></i></button>
             </form>
+            <button onClick={() => setShowAll(!showAll)}>
+                    Show {showAll
+                        ? 'Starred'
+                        : 'All'}
+                </button>
             <Total notes={notes}/>
         </div>
     )

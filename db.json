@@ -1,3 +1,16 @@
 {
-  "notes": []
+  "notes": [
+    {
+      "content": "...please write your new Note",
+      "date": "2021-02-23T12:42:09.801Z",
+      "id": 1,
+      "important": false
+    },
+    {
+      "content": "...please write your new Note",
+      "date": "2021-02-23T12:42:11.508Z",
+      "id": 2,
+      "important": false
+    }
+  ]
 }

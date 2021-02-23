@@ -1,3 +1,80 @@
 body{
-  background-color: red;
+  font-family: "Lucida Console", "Courier New", monospace;
+  background-color: rgba(218, 224, 217, 0.589);
+}
+
+#searchbar{
+  border: 3px solid #123de066;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+.search-label{
+  width: 40px;
+  height: 36px;
+  border: 1px solid #123de066;
+  background: #123de066;
+  text-align: center;
+  color: ghostwhite;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.note-container{
+  display: flex; 
+  align-items: center;
+  flex-direction: column;
+}
+
+.note-items{
+  flex-grow: 2;
+}
+
+.noteapp-container{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.noteapp-item{
+  border: 2px outset #123de066;
+  border-radius: 14px;
+  flex-basis: 40%;
+  background: ghostwhite;
+  min-height: 100px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.innernote-container{
+  display:flex;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.innernote-item{
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+}
+.content{
+height: 80%;
+}
+
+.content-button{
+height: 20%;
+justify-content: space-between;
+}
+
+.starred{
+  background-color: gold;
 }

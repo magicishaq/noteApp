@@ -9,8 +9,9 @@ const Total = ({notes}) => {
                 {notes.length}
             </strong> 
            <p> </p>  
-            Number of important : <strong>{notes.filter(elm => elm.important === true).length} </strong>
+            Number of Starred : <strong>{notes.filter(elm => elm.important === true).length} </strong>
         </pre>
+
     )
 }
 

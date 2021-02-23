@@ -14,7 +14,7 @@ const App = () => {
         setNotes] = useState([]) //blank state
     //storing user submitted notes
     const [newNote,
-        setNewNote] = useState('...please write your new Note')
+        setNewNote] = useState('')
     //keeps track which notes to display
     const [showAll,
         setShowAll] = useState(true)
@@ -52,13 +52,14 @@ const App = () => {
         axios
             .post('http://localhost:3001/notes', newNoteObject)
             .then(response => {
-                hook()//refreshs the page
+                hook() //refreshs the page
+                setNewNote('')
             })
             .catch(error => console.log('error'))
     }
 
     const deleteNote = (id) => {
-      console.log(id)
+        console.log(id)
         const url = `http://localhost:3001/notes/${id}`
         const notesWithoutDel = notes.filter(elm => elm.id !== id)
         const confirmMessage = window.confirm(`Delete: " ${notes.find(elm => elm.id === id).content}"`)
@@ -104,10 +105,11 @@ const App = () => {
 
     return (
         <div className="note-container">
-            <Header title={'Notes'}/> 
+            <Header title={'Notes'}/>
             <div className="note-item">
-                <input id="searchbar" onChange={searchNote}/>
-                <label htmlFor="searchbar"><i className="fas fa-search search-label"></i>
+                <input id="searchbar" onChange={searchNote} placeholder="...Search notes"/>
+                <label htmlFor="searchbar">
+                    <i className="fas fa-search search-label"></i>
                 </label>
             </div>
             <div className="noteapp-container">
@@ -120,14 +122,20 @@ const App = () => {
                 })}
             </div>
             <form className="note-item" onSubmit={addNote}>
-                <input value={newNote} onChange={handleNoteChange}/>
-                <button type="submit"><i className="fas fa-save"></i></button>
-            </form>
-            <button onClick={() => setShowAll(!showAll)}>
-                    Show {showAll
-                        ? 'Starred'
-                        : 'All'}
+                <input
+                    id="note-bar"
+                    value={newNote}
+                    onChange={handleNoteChange}
+                    placeholder="...write a note"/>
+                <button type="submit" className="note-label">
+                    <i className="fas fa-save"></i>
                 </button>
+            </form>
+            <button id="show-button" onClick={() => setShowAll(!showAll)}>
+                Show {showAll
+                    ? 'Starred'
+                    : 'All'}
+            </button>
             <Total notes={notes}/>
         </div>
     )

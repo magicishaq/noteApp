@@ -1,16 +1,27 @@
 {
   "notes": [
     {
-      "content": "...please write your new Note",
-      "date": "2021-02-23T12:42:09.801Z",
+      "content": "Watch blade movies tonight",
+      "date": "2021-02-23T15:10:05.021Z",
       "id": 1,
       "important": false
     },
     {
-      "content": "...please write your new Note",
-      "date": "2021-02-23T12:42:11.508Z",
+      "content": "Watch buffy",
+      "date": "2021-02-23T15:10:56.032Z",
       "id": 2,
       "important": false
+    },
+    {
+      "content": "Watch captain america",
+      "date": "2021-02-23T15:11:05.532Z",
+      "id": 3,
+      "important": false
+    },
+    {
+      "content": "Make a cup of tea, 0 sugars",
+      "date": "2021-02-23T15:26:26.548Z",
+      "id": 4
     }
   ]
 }

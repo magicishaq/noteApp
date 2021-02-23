@@ -10,18 +10,50 @@ body{
   height: 20px;
   border-radius: 5px 0 0 5px;
   outline: none;
-  color: #9DBFAF;
+  color: black;
 }
-.search-label{
+.search-label, .note-label{
   width: 40px;
-  height: 36px;
-  border: 1px solid #123de066;
-  background: #123de066;
+  height: 29px;
+  padding-top: 4px;
   text-align: center;
   color: ghostwhite;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
   font-size: 20px;
+}
+
+.search-label{
+  border: 1px solid #123de066;
+  background: #123de066;
+}
+.note-label{
+  border: 1px solid #00030b80; 
+  background: #00030b80;
+  height: 35px;
+}
+button{
+  border-radius:28px;
+	border:1px solid #4e6096;
+  font-family: "Lucida Console", "Courier New", monospace;
+  padding: 8px 12px;
+}
+button:hover{
+  background-color:#476e9e;
+}
+#show-button{
+  margin-top: 10px;
+}
+#note-bar{
+  flex-basis: 100%;
+    width: 13em;
+    border: 3px solid #00030b80;
+    border-right: none;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: black;
 }
 
 .note-container{
@@ -30,8 +62,9 @@ body{
   flex-direction: column;
 }
 
-.note-items{
+.note-item{
   flex-grow: 2;
+  margin: 10px 0px; 
 }
 
 .noteapp-container{
@@ -77,4 +110,12 @@ justify-content: space-between;
 
 .starred{
   background-color: gold;
+}
+
+
+/* mobile first */
+@media only screen and (max-width: 600px) {
+  .noteapp-item{
+    flex-basis: 100%;
+  }
 }

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Note from './Note'
 import Total from './Total'
+import '../index.css'
 //Main bulk of the app
 const App = () => {
     const [searchTerm,
@@ -40,7 +41,6 @@ const App = () => {
     const addNote = (event) => {
         event.preventDefault()
         const newNoteObject = {
-            id: notes.length + 1,
             content: newNote,
             date: new Date().toISOString()
             //important: Math.random() < 0.5
@@ -50,15 +50,13 @@ const App = () => {
         axios
             .post('http://localhost:3001/notes', newNoteObject)
             .then(response => {
-                console.log('response')
-                //adds the newNote to the notes states
-                setNotes(notes.concat(newNoteObject))
-                setNewNote('') //input field is now blank
+                hook()//refreshs the page
             })
-            .catch(error => addNote(event))
+            .catch(error => console.log('error'))
     }
 
     const deleteNote = (id) => {
+      console.log(id)
         const url = `http://localhost:3001/notes/${id}`
         const notesWithoutDel = notes.filter(elm => elm.id !== id)
         const confirmMessage = window.confirm(`Delete: " ${notes.find(elm => elm.id === id).content}"`)
